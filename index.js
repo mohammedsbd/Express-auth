@@ -1,5 +1,6 @@
 import express from 'express'; //requiring express
-import { searchController, usernameController } from './controller';
+import router from './route.js';
+
 const app = express(); //invoking the express
 const PORT = 3000;
 
@@ -9,11 +10,8 @@ app.get('/',(req, res) =>{
     res.send('Hello, world');
 })
 
-// dynamic routing
-app.get('/user/:username',usernameController)
+app.use(`/user`,router)
 
-
-app.get('search/',searchController)
 
 
 app.listen(PORT,()=>{
